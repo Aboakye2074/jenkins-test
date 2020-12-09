@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('Check file3') {
+      steps {
+        sh 'cat file3.txt'
+      }
+    }
+
   }
 }
