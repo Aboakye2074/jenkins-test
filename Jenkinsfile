@@ -23,7 +23,7 @@ pipeline {
                 script {
                     // Conditional deployment based on the branch name.
                     // If the current branch is 'master', deploy to production.
-                    if (env.BRANCH_NAME == 'main') {
+                    if (env.BRANCH_NAME == 'master') {
                         echo 'Deploying to production...'
                         // Add production deployment steps here.
                     } else {
