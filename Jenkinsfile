@@ -1,23 +1,38 @@
 pipeline {
-  agent any
-  stages {
-    stage('Check file1') {
-      steps {
-        sh 'cat file1.txt'
-      }
-    }
+    // Define the agent where the pipeline will run. 'any' means it can run on any available agent.
+    agent any
 
-    stage('Check file2') {
-      steps {
-        sh 'cat file2.txt'
-      }
-    }
+    stages {
+        // First stage: Build
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        
+        // Second stage: Test
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
 
-    stage('Check file3') {
-      steps {
-        sh 'cat file3.txt'
-      }
+        // Third stage: Deploy
+        stage('Deploy') {
+            steps {
+                script {
+                    // Conditional deployment based on the branch name.
+                    // If the current branch is 'main', deploy to production.
+                    if (env.BRANCH_NAME == 'main') {
+                        echo 'Deploying to production...'
+                        // Add production deployment steps here.
+                    } else {
+                        // If the branch is not 'main', deploy to staging.
+                        echo 'Deploying to staging...'
+                        // Add staging deployment steps here.
+                    }
+                }
+            }
+        }
     }
-
-  }
 }
