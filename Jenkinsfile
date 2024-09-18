@@ -25,7 +25,7 @@ pipeline {
                     }
                 }
                 // Sub-stage for integration tests
-                stage('integration Tests') {
+                stage('Integration Tests') {
                     steps {
                         // message to indicate that integration tests are running.
                         echo 'Running integration tests...'
